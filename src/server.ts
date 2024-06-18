@@ -1,9 +1,9 @@
 import express from "express";
+import { categoriesRoutes } from "./routes/categories.routes";
 
-const server = express()
+const server = express();
+server.use(express.json());
 
-server.get("/", (req, res) => {
-  return res.json({message: "Hello World"})
-})
+server.use(categoriesRoutes);
 
-server.listen("3333", () => console.log("Api rodando http://localhost:3333"))
+server.listen("3333", () => console.log("Api rodando http://localhost:3333"));
