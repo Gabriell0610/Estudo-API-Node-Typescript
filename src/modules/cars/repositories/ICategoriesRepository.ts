@@ -4,6 +4,7 @@ interface ICreateCategoryDTO {
   name: string;
   description: string;
 }
+
 interface ICatergoriesRepository {
   findName(name: string): Category;
   create({ name, description }: ICreateCategoryDTO): void;
