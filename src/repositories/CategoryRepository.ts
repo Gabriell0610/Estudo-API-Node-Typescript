@@ -1,9 +1,5 @@
 import { Category } from "../model/Category";
-
-interface ICreateCategoryDTO {
-  name: string;
-  description: string;
-}
+import { ICreateCategoryDTO } from "./ICategoriesRepository";
 
 class CategoriesRepository {
   private categories: Category[];
@@ -12,6 +8,7 @@ class CategoriesRepository {
     this.categories = [];
   }
 
+  //criando as categorias
   create({ name, description }: ICreateCategoryDTO): void {
     const category = new Category();
 
@@ -24,6 +21,18 @@ class CategoriesRepository {
 
     this.categories.push(category);
   }
+
+  //listando as categorias
+  list(): Category[] {
+    return this.categories
+  }
+
+  // percorrendo o array e pegando objetos que contenham o nome igual ao que está sendo criado
+  findName(name: string): Category {
+    const category = this.categories.find(category => category.name === name)
+    return category
+  }
 }
 
-export { CategoriesRepository };
+export { CategoriesRepository, ICreateCategoryDTO };
+
