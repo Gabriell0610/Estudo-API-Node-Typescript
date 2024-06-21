@@ -1,15 +1,26 @@
-import { Category } from "../model/Category";
+import { Category } from "../../model/Category";
 
 import {
   ICatergoriesRepository,
   ICreateCategoryDTO,
-} from "./ICategoriesRepository";
+} from "../ICategoriesRepository";
 
 class CategoriesRepository implements ICatergoriesRepository {
   private categories: Category[];
 
-  constructor() {
+  //Aplicando o Singleton Pattern
+  private static INSTANCE: CategoriesRepository // Instacia estática
+  
+  private constructor() {
     this.categories = [];
+  }
+
+  public static getInstance(): CategoriesRepository {
+    if(!CategoriesRepository.INSTANCE) { //Se a instância não existir ela recebe uma instância da classe
+      CategoriesRepository.INSTANCE = new CategoriesRepository()
+    }
+
+    return CategoriesRepository.INSTANCE //caso exista a instância ela é retornada
   }
 
   create({ name, description }: ICreateCategoryDTO): void {
@@ -25,7 +36,7 @@ class CategoriesRepository implements ICatergoriesRepository {
     this.categories.push(category);
   }
 
-  list() {
+  list(): Category[] {
     return this.categories;
   }
 
@@ -36,3 +47,4 @@ class CategoriesRepository implements ICatergoriesRepository {
 }
 
 export { CategoriesRepository };
+
