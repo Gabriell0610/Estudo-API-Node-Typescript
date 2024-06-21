@@ -10,7 +10,7 @@ const categoriesRepository = new CategoriesRepository();
 categoriesRoutes.post("/", (req, res) => {
   const { name, description } = req.body;
 
-  //Objeto que instacia a classe CreateCategoryService, passando o repostories como contructor da classe
+  //Objeto que instacia a classe CreateCategoryService, passando o repostories como constructor da classe
   const createCategoryService = new CreateCategoryService(categoriesRepository);
   createCategoryService.execute({ name, description });
 
@@ -23,3 +23,4 @@ categoriesRoutes.get("/", (req, res) => {
 });
 
 export { categoriesRoutes };
+
