@@ -4,6 +4,8 @@ import { ICreateSpecificationDTO } from "../../repositories/ISpecificationReposi
 
 
 class CreateCategoryUseCase {
+
+  //Aplicando a Inversão de depêndencia e Princípio de Substituição do SOLID
   constructor(private categoriesRepository: ICatergoriesRepository) {}
 
   execute({ name, description }: ICreateSpecificationDTO): void {

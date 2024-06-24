@@ -1,9 +1,10 @@
-import { ICreateSpecificationDTO } from "../../repositories/ISpecificationRepository";
-import { SpecificationRepository } from "../../repositories/implemetations/SpecificationRepository";
+import { ICreateSpecificationDTO, ISpecificationRepository } from "../../repositories/ISpecificationRepository";
+
 
 class CreateSpecificationUseCase {
     
-    constructor(private specificationRepository: SpecificationRepository) {}
+    //Aplicando a Inversão de depêndencia e Princípio de Substituição do SOLID
+    constructor(private specificationRepository: ISpecificationRepository) {}
 
     execute({name, description}: ICreateSpecificationDTO) {
 
