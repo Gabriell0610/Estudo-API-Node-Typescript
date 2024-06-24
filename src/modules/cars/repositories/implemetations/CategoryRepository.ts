@@ -9,18 +9,19 @@ class CategoriesRepository implements ICatergoriesRepository {
   private categories: Category[];
 
   //Aplicando o Singleton Pattern
-  private static INSTANCE: CategoriesRepository // Instacia estática
-  
+  private static INSTANCE: CategoriesRepository; // Instacia estática
+
   private constructor() {
     this.categories = [];
   }
 
   public static getInstance(): CategoriesRepository {
-    if(!CategoriesRepository.INSTANCE) { //Se a instância não existir ela recebe uma instância da classe
-      CategoriesRepository.INSTANCE = new CategoriesRepository()
+    if (!CategoriesRepository.INSTANCE) {
+      //Se a instância não existir ela recebe uma instância da classe
+      CategoriesRepository.INSTANCE = new CategoriesRepository();
     }
 
-    return CategoriesRepository.INSTANCE //caso exista a instância ela é retornada
+    return CategoriesRepository.INSTANCE; //caso exista a instância ela é retornada
   }
 
   create({ name, description }: ICreateCategoryDTO): void {
@@ -47,4 +48,3 @@ class CategoriesRepository implements ICatergoriesRepository {
 }
 
 export { CategoriesRepository };
-
