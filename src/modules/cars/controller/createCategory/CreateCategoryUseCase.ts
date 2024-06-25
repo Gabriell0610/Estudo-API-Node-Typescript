@@ -9,7 +9,7 @@ class CreateCategoryUseCase {
   constructor(private categoriesRepository: ICatergoriesRepository) {}
 
   execute({ name, description }: ICreateSpecificationDTO): void {
-    const categoryAlredyExists = this.categoriesRepository.findName(name);
+    const categoryAlredyExists = this.categoriesRepository.findByName(name);
 
     if (categoryAlredyExists) {
       throw new Error("Category Alredy exists!");
